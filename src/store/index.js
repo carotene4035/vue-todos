@@ -19,8 +19,8 @@ const store = new Vuex.Store({
     [mutationTypes.INCREMENT] (state, payload) {
       state.count = state.count + payload.amount
     },
-    addtodo (state, todo) {
-      state.todos.push(todo)
+    [mutationTypes.ADD_TODO] (state, payload) {
+      state.todos.push(payload.text)
     }
   },
   actions: {
@@ -28,6 +28,12 @@ const store = new Vuex.Store({
       commit({
         type: mutationTypes.INCREMENT,
         paload: payload
+      })
+    },
+    [actionTypes.ADD_TODO] ({commit}, payload) {
+      commit({
+        type: mutationTypes.ADD_TODO,
+        text: payload.text
       })
     }
   },

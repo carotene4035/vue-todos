@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="todoName">
+    <input type="" v-model='text'>
     <button v-on:click='submit'>提出する</button>
     <div>{{ todos }}</div>
     <div>
@@ -16,7 +16,7 @@ import actionTypes from '@/store/action-types'
 export default {
   data () {
     return {
-      todoName: ''
+      text: ''
     }
   },
   computed: {
@@ -43,14 +43,23 @@ export default {
       //   type: types.INCREMENT,
       //   amount: 10
       // })
+
+      /**
+       * actionをdispatchする書き方
+       */
       this.$store.dispatch({
         type: actionTypes.INCREMENT,
         amount: 10
       })
     },
     submit () {
-      /** これだと、対象のストアがわかりにくい */
-      this.$store.commit('addtodo')
+      /**
+       * actionをdispatchする書き方
+       */
+      this.$store.dispatch({
+        type: actionTypes.ADD_TODO,
+        text: this.text
+      })
     }
   }
 }
