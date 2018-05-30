@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import types from '@/store/types'
+import actionTypes from '@/store/action-types'
 
 export default {
   data () {
@@ -29,6 +29,9 @@ export default {
   },
   methods: {
     increment () {
+      /**
+       * mutationを直接呼び出す書き方
+       */
       // 引数を渡すこともできる
       // this.$store.commit('increment', 2)
 
@@ -36,8 +39,12 @@ export default {
       // this.$store.commit('increment', { amount: 2 })
 
       // こういう書き方もできる
-      this.$store.commit({
-        type: types.INCREMENT,
+      // this.$store.commit({
+      //   type: types.INCREMENT,
+      //   amount: 10
+      // })
+      this.$store.dispatch({
+        type: actionTypes.INCREMENT,
         amount: 10
       })
     },

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import types from './types'
+import mutationTypes from './mutation-types'
+import actionTypes from './action-types'
 
 Vue.use(Vuex)
 
@@ -15,12 +16,19 @@ const store = new Vuex.Store({
    * 状態を変更する
    */
   mutations: {
-    /** あとでactionを使って書き直し */
-    [types.INCREMENT] (state, payload) {
+    [mutationTypes.INCREMENT] (state, payload) {
       state.count = state.count + payload.amount
     },
     addtodo (state, todo) {
       state.todos.push(todo)
+    }
+  },
+  actions: {
+    [actionTypes.INCREMENT] ({commit}, payload) {
+      commit({
+        type: mutationTypes.INCREMENT,
+        paload: payload
+      })
     }
   },
   /*
