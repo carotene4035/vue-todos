@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import actionTypes from '@/store/action-types'
+import ACTION from '@/vuex/action-types'
 
 export default {
   data () {
@@ -48,7 +48,7 @@ export default {
        * actionをdispatchする書き方
        */
       this.$store.dispatch({
-        type: actionTypes.INCREMENT,
+        type: ACTION.INCREMENT,
         amount: 10
       })
     },
@@ -57,7 +57,7 @@ export default {
        * actionをdispatchする書き方
        */
       this.$store.dispatch({
-        type: actionTypes.ADD_TODO,
+        type: ACTION.ADD_TODO,
         text: this.text
       })
     }
