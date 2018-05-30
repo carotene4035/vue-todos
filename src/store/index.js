@@ -5,6 +5,31 @@ import actionTypes from './action-types'
 
 Vue.use(Vuex)
 
+const actions = {
+  [actionTypes.INCREMENT] ({commit}, payload) {
+    commit({
+      type: mutationTypes.INCREMENT,
+      paload: payload
+    })
+  },
+  [actionTypes.ADD_TODO] ({commit}, payload) {
+    commit({
+      type: mutationTypes.ADD_TODO,
+      text: payload.text
+    })
+  }
+}
+
+const mutations = {
+  [mutationTypes.INCREMENT] (state, payload) {
+    state.count = state.count + payload.amount
+  },
+  [mutationTypes.ADD_TODO] (state, payload) {
+    state.todos.push(payload.text)
+  }
+}
+
+
 const store = new Vuex.Store({
   /** 状態 */
   state: {
@@ -15,28 +40,11 @@ const store = new Vuex.Store({
   /*
    * 状態を変更する
    */
-  mutations: {
-    [mutationTypes.INCREMENT] (state, payload) {
-      state.count = state.count + payload.amount
-    },
-    [mutationTypes.ADD_TODO] (state, payload) {
-      state.todos.push(payload.text)
-    }
-  },
-  actions: {
-    [actionTypes.INCREMENT] ({commit}, payload) {
-      commit({
-        type: mutationTypes.INCREMENT,
-        paload: payload
-      })
-    },
-    [actionTypes.ADD_TODO] ({commit}, payload) {
-      commit({
-        type: mutationTypes.ADD_TODO,
-        text: payload.text
-      })
-    }
-  },
+  mutations: mutations,
+  /*
+   * 非同期処理をする
+   */
+  actions: actions,
   /*
    * storeの値をfilteringしたりカウントしたりするとき、getternにまとめる
    */
