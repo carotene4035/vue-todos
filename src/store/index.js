@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import types from './types'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,7 @@ const store = new Vuex.Store({
    */
   mutations: {
     /** あとでactionを使って書き直し */
-    increment (state, payload) {
+    [types.INCREMENT] (state, payload) {
       state.count = state.count + payload.amount
     },
     addtodo (state, todo) {

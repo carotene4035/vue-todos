@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import types from '@/store/types'
+
 export default {
   data () {
     return {
@@ -35,7 +37,7 @@ export default {
 
       // こういう書き方もできる
       this.$store.commit({
-        type: 'increment',
+        type: types.INCREMENT,
         amount: 10
       })
     },
