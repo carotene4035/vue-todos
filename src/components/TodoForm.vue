@@ -27,12 +27,17 @@ export default {
   },
   methods: {
     increment () {
-      /** これだと、対象のストアがわかりにくい */
       // 引数を渡すこともできる
       // this.$store.commit('increment', 2)
 
       // オブジェクトとして渡すこともできる（store側ではpayloadとして渡される
-      this.$store.commit('increment', { amount: 2 })
+      // this.$store.commit('increment', { amount: 2 })
+
+      // こういう書き方もできる
+      this.$store.commit({
+        type: 'increment',
+        amount: 10
+      })
     },
     submit () {
       /** これだと、対象のストアがわかりにくい */
