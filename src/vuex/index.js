@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 import MUTATION from '@/vuex/mutation-types'
 import ACTION from '@/vuex/action-types'
 
+/** modelの読み込み */
+import Todo from '@/models/todo'
+
 Vue.use(Vuex)
 
 const actions = {
@@ -25,7 +28,8 @@ const mutations = {
     state.count = state.count + payload.amount
   },
   [MUTATION.ADD_TODO] (state, payload) {
-    state.todos.push(payload.text)
+    const todo = new Todo(payload.text)
+    state.todos.push(todo)
   }
 }
 
