@@ -1,18 +1,25 @@
 <template>
   <div>
-      <todo-form></todo-form>
-      <todo-list></todo-list>
+      <the-toot-form></the-toot-form>
+      <the-my-favorites></the-my-favorites>
+      <the-my-toots></the-my-toots>
+      <the-timeline></the-timeline>
   </div>
 </template>
 
 <script>
-import MyFavorites from '@/components/Index/MyFavorites.vue'
-import MyToots from '@/components/Index/MyToots.vue'
-import Timeline from '@/components/Index/Timeline.vue'
-import TootForm from '@/components/Index/TootForm.vue'
+import TheMyFavorites from '@/components/Index/TheMyFavorites.vue'
+import TheMyToots from '@/components/Index/TheMyToots.vue'
+import TheTimeline from '@/components/Index/TheTimeline.vue'
+import TheTootForm from '@/components/Index/TheTootForm.vue'
 
 export default {
-  components: { MyFavorites, MyToots, Timeline, TootForm }
+  components: {
+    TheMyFavorites,
+    TheMyToots,
+    TheTimeline,
+    TheTootForm
+  }
 }
 </script>
 
