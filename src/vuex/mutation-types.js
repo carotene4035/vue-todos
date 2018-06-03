@@ -1,7 +1,6 @@
 const types = {
-  INCREMENT: 'INCREMENT',
-  ADD_TODO: 'ADD_TODO',
-  ADD_TOOT: 'ADD_TOOT'
+  ADD_TODO: 'todo/ADD_TODO',
+  ADD_TOOT: 'toot/ADD_TOOT'
 }
 
 export default types

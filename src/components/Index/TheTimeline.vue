@@ -9,7 +9,7 @@
 export default {
   computed: {
     toots () {
-      return this.$store.getters.all
+      return this.$store.getters['toot/all']
     }
   }
 }
