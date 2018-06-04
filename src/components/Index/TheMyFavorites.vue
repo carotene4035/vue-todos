@@ -9,7 +9,7 @@
 export default {
   computed: {
     myFavs () {
-      return this.$store.getters.myFavs
+      return this.$store.getters['toot/myFavs']
     }
   }
 }

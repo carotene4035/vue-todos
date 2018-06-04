@@ -1,33 +1,21 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import MUTATION from '@/vuex/mutation-types'
 import ACTION from '@/vuex/action-types'
 
 /** modelの読み込み */
 import Toot from '@/models/toot'
 
-Vue.use(Vuex)
-
-const state = {
-  toots: [
-    {id: 1, user_id: 1, toot: 'aaa', fav: true},
-    {id: 2, user_id: 1, toot: 'aibbb', fav: false},
-    {id: 3, user_id: 2, toot: 'ccc', fav: false}
-  ]
-}
-
 const actions = {
   [ACTION.ADD_TOOT] ({commit}, payload) {
     commit({
       type: MUTATION.ADD_TOOT,
-      text: payload.text
+      toot: payload.toot
     })
   }
 }
 
 const mutations = {
   [MUTATION.ADD_TOOT] (state, payload) {
-    const count = this.state.toots.length
+    const count = state.toots.length
     const id = count + 1
     const toot = new Toot(id, payload.toot)
     state.toots.push(toot)
@@ -35,7 +23,7 @@ const mutations = {
 }
 
 const getters = {
-  all (state) {
+  all: (state) => {
     return state.toots
   },
   myToots: (state) => (id) => {
@@ -46,11 +34,20 @@ const getters = {
   }
 }
 
-const toot = new Vuex.Store({
+const state = {
+  toots: [
+    {id: 1, user_id: 1, toot: 'aaa', fav: true},
+    {id: 2, user_id: 1, toot: 'aibbb', fav: false},
+    {id: 3, user_id: 2, toot: 'ccc', fav: false}
+  ]
+}
+
+const toot = {
+  namespaced: true,
   state: state,
   getters: getters,
   mutations: mutations,
   actions: actions
-})
+}
 
 export default toot

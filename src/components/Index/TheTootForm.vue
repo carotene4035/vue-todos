@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ACTION from '@/vuex/action-types'
+// import ACTION from '@/vuex/action-types'
 
 export default {
   data () {
@@ -16,10 +16,7 @@ export default {
   },
   methods: {
     submit () {
-      this.$store.dispatch({
-        type: ACTION.ADD_TOOT,
-        text: this.toot
-      })
+      this.$store.dispatch('toot/ADD_TOOT', {toot: this.toot})
     }
   }
 }
