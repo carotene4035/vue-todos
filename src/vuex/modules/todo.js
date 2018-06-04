@@ -40,11 +40,12 @@ const mutations = {
 const getters = {
 }
 
-const todo = new Vuex.Store({
+const todo = {
+  namespaced: true,
   state: state,
   getters: getters,
   mutations: mutations,
   actions: actions
-})
+}
 
 export default todo
