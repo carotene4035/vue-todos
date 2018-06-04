@@ -1,9 +1,9 @@
 <template>
   <div>
       <the-toot-form></the-toot-form>
-      <the-my-favorites></the-my-favorites>
-      <the-my-toots></the-my-toots>
-      <the-timeline></the-timeline>
+      <the-my-favorites :toots='myFavToots'></the-my-favorites>
+      <the-my-toots :toots='myToots'></the-my-toots>
+      <the-timeline :toots='timelineToots'></the-timeline>
   </div>
 </template>
 
@@ -19,6 +19,17 @@ export default {
     TheMyToots,
     TheTimeline,
     TheTootForm
+  },
+  computed: {
+    timelineToots () {
+      return this.$store.getters['toot/allToots']
+    },
+    myToots () {
+      return this.$store.getters['toot/myToots'](1)
+    },
+    myFavToots () {
+      return this.$store.getters['toot/myFavToots']
+    }
   }
 }
 </script>

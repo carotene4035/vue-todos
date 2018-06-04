@@ -23,13 +23,13 @@ const mutations = {
 }
 
 const getters = {
-  all: (state) => {
+  allToots: (state) => {
     return state.toots
   },
   myToots: (state) => (id) => {
     return state.toots.filter(toot => toot.user_id === id)
   },
-  myFavs (state) {
+  myFavToots (state) {
     return state.toots.filter(todo => todo.fav)
   }
 }

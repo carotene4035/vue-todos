@@ -7,10 +7,6 @@
 
 <script>
 export default {
-  computed: {
-    toots () {
-      return this.$store.getters['toot/all']
-    }
-  }
+  props: ['toots']
 }
 </script>
