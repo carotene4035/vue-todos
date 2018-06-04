@@ -20,6 +20,9 @@ export default {
     TheTimeline,
     TheTootForm
   },
+  created () {
+    this.$store.dispatch('toot/INITIALIZE')
+  },
   computed: {
     timelineToots () {
       return this.$store.getters['toot/allToots']

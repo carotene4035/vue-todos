@@ -1,8 +1,8 @@
 export default class Toot {
-  constructor (id, toot) {
-    this.id = id
-    this.toot = toot
-    this.fav = false
-    this.user_id = 1
+  constructor (toot) {
+    this.id = toot.id
+    this.toot = toot.toot
+    this.fav = toot.fav
+    this.user_id = toot.user_id
   }
 }
