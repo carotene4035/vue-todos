@@ -1,4 +1,4 @@
-import MUTATION from '@/vuex/mutation-types'
+// import MUTATION from '@/vuex/mutation-types'
 import ACTION from '@/vuex/action-types'
 
 import TootAPI from '@/api/toot'
@@ -7,15 +7,16 @@ import TootAPI from '@/api/toot'
 import Toot from '@/models/toot'
 
 const actions = {
-  /** ここでapi登録処理を走らせる */
   [ACTION.ADD_TOOT] ({commit}, payload) {
-    commit({
-      type: MUTATION.ADD_TOOT,
-      toot: payload.toot
+    const toot = new Toot({
+      content: payload.content
+    })
+    TootAPI.create(toot, response => {
+      /** 再度新しいデータを取得しにゆく */
+      this.dispatch('toot/INITIALIZE')
     })
   },
   INITIALIZE ({commit}, payload) {
-    /** api呼び出し */
     TootAPI.getAll(response => {
       commit('INITIALIZE', {toots: response.data})
     })
@@ -25,17 +26,13 @@ const actions = {
 const mutations = {
   /** 初期化処理 */
   INITIALIZE (state, payload) {
+    state.toots = []
+
     const toots = payload.toots
     toots.forEach(toot => {
       const tootObj = new Toot(toot)
       state.toots.push(tootObj)
     })
-  },
-  [MUTATION.ADD_TOOT] (state, payload) {
-    const count = state.toots.length
-    const id = count + 1
-    const toot = new Toot(id, payload.toot)
-    state.toots.push(toot)
   }
 }
 

@@ -21,7 +21,7 @@ const tootAPI = {
       })
   },
   create (content, callback) {
-    httpClient.post('/', content)
+    httpClient.post('/toots', content)
       .then(response => {
         callback(response)
       })

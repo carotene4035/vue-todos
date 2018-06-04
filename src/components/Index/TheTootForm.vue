@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     submit () {
-      this.$store.dispatch('toot/ADD_TOOT', {toot: this.toot})
+      this.$store.dispatch('toot/ADD_TOOT', {content: this.toot})
     }
   }
 }
