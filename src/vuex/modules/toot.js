@@ -1,24 +1,18 @@
-// import MUTATION from '@/vuex/mutation-types'
-import ACTION from '@/vuex/action-types'
-
 import TootAPI from '@/api/toot'
-
-/** modelの読み込み */
 import Toot from '@/models/toot'
 
 const actions = {
-  [ACTION.ADD_TOOT] ({commit}, payload) {
+  INITIALIZE ({commit}, payload) {
+    TootAPI.getAll(response => {
+      commit('INITIALIZE', {toots: response.data})
+    })
+  },
+  ADD_TOOT ({commit}, payload) {
     const toot = new Toot({
       content: payload.content
     })
     TootAPI.create(toot, response => {
-      /** 再度新しいデータを取得しにゆく */
       this.dispatch('toot/INITIALIZE')
-    })
-  },
-  INITIALIZE ({commit}, payload) {
-    TootAPI.getAll(response => {
-      commit('INITIALIZE', {toots: response.data})
     })
   }
 }
@@ -51,9 +45,6 @@ const getters = {
 
 const state = {
   toots: [
-    // {id: 1, user_id: 1, toot: 'aaa', fav: true},
-    // {id: 2, user_id: 1, toot: 'aibbb', fav: false},
-    // {id: 3, user_id: 2, toot: 'ccc', fav: false}
   ]
 }
 
