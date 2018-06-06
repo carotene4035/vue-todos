@@ -1,4 +1,5 @@
 import Vue from 'vue'
+/** componentを読み込んでる */
 import HelloWorld from '@/components/HelloWorld'
 
 describe('HelloWorld.vue', () => {
